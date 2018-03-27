@@ -1,3 +1,4 @@
+
 package com.netcracker.admissiontest.user.config;
 
 import org.springframework.context.annotation.Bean;
