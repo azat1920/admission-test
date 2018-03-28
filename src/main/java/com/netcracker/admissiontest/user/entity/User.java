@@ -17,12 +17,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-<<<<<<< HEAD
     private User() {}
 
-=======
-    
->>>>>>> da5fb632619a42ed2221774726ab5321987232ec
     public User(String name, String email) {
         this();
         this.name = name;

@@ -5,9 +5,9 @@ import com.netcracker.admissiontest.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -25,5 +25,21 @@ public class UserService {
             list.add(user);
         }
         return list;
+    }
+
+    public List<User> get(long id){
+        List<User> list = new ArrayList<>();
+
+        Optional<User> opUser = userRepository.findById(id);
+        if (opUser.isPresent())list.add(opUser.get());
+        return  list;
+    }
+
+    public void updateUser(Long id, User user){
+        userRepository.save(user);
+    }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
     }
 }
