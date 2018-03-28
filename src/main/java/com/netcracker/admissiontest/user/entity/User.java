@@ -1,14 +1,23 @@
 package com.netcracker.admissiontest.user.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "firstName")
     private String name;
+
+    @Column(name = "email")
     private String email;
 
-    public User() {}
-    public User(long id, String name, String email) {
-        this.id = id;
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -37,5 +46,8 @@ public class User {
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return id + ":" + name;
+    }
 }
