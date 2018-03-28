@@ -42,13 +42,13 @@ public class UserController {
     }
 
     @ApiOperation(value = "Update user", produces = APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value ="/user/", method = RequestMethod.POST)
+    @RequestMapping(value ="/", method = RequestMethod.PUT)
     public ResponseEntity<?> updateUser(@RequestBody Long id, User user) {
         userService.updateUser(id, user);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Update user", produces = APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "Delete user", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value ="/user/", method = RequestMethod.DELETE)
     public ResponseEntity<?> updateUser(@RequestBody Long id) {
         userService.deleteUser(id);
