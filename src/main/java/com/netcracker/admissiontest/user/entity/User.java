@@ -17,7 +17,10 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    private User() {}
+
     public User(String name, String email) {
+        this();
         this.name = name;
         this.email = email;
     }
