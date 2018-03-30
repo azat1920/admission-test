@@ -27,6 +27,10 @@ public class UserService {
         return list;
     }
 
+    public User getUser(long id){
+        return userRepository.findById(id).get();
+    }
+
     public List<User> get(long id){
         List<User> list = new ArrayList<>();
 
