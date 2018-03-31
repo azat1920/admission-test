@@ -40,7 +40,7 @@ public class RoleController {
 
     @ApiOperation(value = "Update role", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value ="/{id}/", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateRole(@PathVariable("id") Long id, Role role) {
+    public ResponseEntity<?> updateRole(@PathVariable("id") Long id, @RequestBody Role role) {
         roleService.updateRole(id, role);
         return  new ResponseEntity<>(HttpStatus.OK);
     }

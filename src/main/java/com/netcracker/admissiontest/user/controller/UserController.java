@@ -40,7 +40,7 @@ public class UserController {
 
     @ApiOperation(value = "Update user", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value ="/user/{id}/", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@PathVariable("id") Long id, User user) {
+    public ResponseEntity<?> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
         userService.updateUser(id, user);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
