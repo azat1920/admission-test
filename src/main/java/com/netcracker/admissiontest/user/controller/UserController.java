@@ -25,15 +25,9 @@ public class UserController {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
 
-    /*@ApiOperation(value = "Get user by id", produces = APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> getUserById(Long id){
-        return new ResponseEntity<>(userService.get(id), HttpStatus.OK);
-    }*/
-
     @ApiOperation(value = "Get user by id", produces = APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ResponseEntity<User> getUserById(@RequestParam("id") Long id){
+    @RequestMapping(value = "/user/{id}/", method = RequestMethod.GET)
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 

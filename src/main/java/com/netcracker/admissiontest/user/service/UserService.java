@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -29,14 +28,6 @@ public class UserService {
 
     public User getUser(long id){
         return userRepository.findById(id).get();
-    }
-
-    public List<User> get(long id){
-        List<User> list = new ArrayList<>();
-
-        Optional<User> opUser = userRepository.findById(id);
-        if (opUser.isPresent())list.add(opUser.get());
-        return  list;
     }
 
     public void updateUser(Long id, User user){
