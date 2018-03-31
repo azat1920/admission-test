@@ -1,4 +1,4 @@
-package com.netcracker.admissiontest.user.config;
+package com.netcracker.admissiontest.role.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static springfox.documentation.builders.PathSelectors.regex;
 import static springfox.documentation.builders.RequestHandlerSelectors.basePackage;
 
-@Configuration("UserSwaggerConfiguration")
+@Configuration("RoleSwaggerConfiguration")
 @EnableSwagger2
 public class SwaggerConfiguration {
 
@@ -19,7 +19,7 @@ public class SwaggerConfiguration {
     public Docket ingredientsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(basePackage("com.netcracker.admissiontest.user"))
+                .apis(basePackage("com.netcracker.admissiontest.role"))
                 .paths(regex("/.*"))
                 .build()
                 .groupName("ingredients")

@@ -17,12 +17,20 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    private User() {}
+   /* @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;*/
+
+
+
+    public User() {}
 
     public User(String name, String email) {
-        this();
+
         this.name = name;
         this.email = email;
+
+
     }
 
     public long getId() {
@@ -53,4 +61,12 @@ public class User {
     public String toString() {
         return id + ":" + name;
     }
+
+/*    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }*/
 }

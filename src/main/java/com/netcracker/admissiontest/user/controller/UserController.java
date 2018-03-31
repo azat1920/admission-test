@@ -39,15 +39,15 @@ public class UserController {
     }
 
     @ApiOperation(value = "Update user", produces = APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value ="/", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@RequestParam("id") Long id, User user) {
+    @RequestMapping(value ="/user/{id}/", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateUser(@PathVariable("id") Long id, User user) {
         userService.updateUser(id, user);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ApiOperation(value = "Delete user", produces = APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value ="/user", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteUser(@RequestParam("id") Long id) {
+    @RequestMapping(value ="/user/{id}/", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
