@@ -15,7 +15,7 @@ import static springfox.documentation.builders.RequestHandlerSelectors.basePacka
 @EnableSwagger2
 public class SwaggerConfiguration {
 
-    @Bean
+/*    @Bean
     public Docket ingredientsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -25,7 +25,20 @@ public class SwaggerConfiguration {
                 .groupName("ingredients")
                 .useDefaultResponseMessages(false)
                 .apiInfo(getApiInfo());
+    }*/
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(getApiInfo())
+                .select()
+                .apis(basePackage("com.netcracker.admissiontest"))
+                .paths(regex("/.*"))
+                .build();
     }
+
+
+
 
     private ApiInfo getApiInfo() {
         return new ApiInfoBuilder()

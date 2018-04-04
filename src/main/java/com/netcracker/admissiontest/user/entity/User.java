@@ -1,5 +1,7 @@
 package com.netcracker.admissiontest.user.entity;
 
+import com.netcracker.admissiontest.role.entity.Role;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,7 +9,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -17,23 +19,31 @@ public class User {
     @Column(name = "email")
     private String email;
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
-    private Role role;*/
-
+    private Role role;
 
 
     public User() {}
 
-    public User(String name, String email) {
+    public User(String name, String email, Role role) {
 
         this.name = name;
         this.email = email;
+        this.role = role;
 
 
     }
 
-    public long getId() {
+
+    @Override
+    public String toString() {
+        return id + ":" + name;
+    }
+
+
+
+    public long getId () {
         return id;
     }
 
@@ -57,16 +67,13 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return id + ":" + name;
-    }
-
-/*    public Role getRole() {
+    public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
-    }*/
+    }
+
+
 }

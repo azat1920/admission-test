@@ -14,6 +14,7 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+
     public void createRole(Role role) {
          roleRepository.save(role);
     }
