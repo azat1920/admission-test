@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,11 @@ public class Role {
     @NotNull
     private String name;
 
+
+    //@JsonManagedReference
+    //@JsonBackReference
     @OneToMany(cascade = CascadeType.ALL,   mappedBy = "role")
     private Set<User> users = new HashSet<>();
-
 
 
     public Role() {}
