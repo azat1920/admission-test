@@ -1,11 +1,7 @@
 package com.netcracker.admissiontest.role.entity;
 
-import com.netcracker.admissiontest.user.entity.User;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -23,9 +19,11 @@ public class Role{
 
     //@JsonManagedReference
     //@JsonBackReference
+/*
     @OneToMany(cascade = CascadeType.ALL,   mappedBy = "role")
     private Set<User> users = new HashSet<>();
 
+*/
 
     public Role() {}
 
@@ -34,11 +32,11 @@ public class Role{
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,6 +48,8 @@ public class Role{
         this.name = name;
     }
 
+    /*
+
     public Set<User> getUsers() {
         return users;
     }
@@ -57,6 +57,7 @@ public class Role{
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+*/
 
     @Override
     public String toString() {

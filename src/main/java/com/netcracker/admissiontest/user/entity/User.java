@@ -1,7 +1,6 @@
 package com.netcracker.admissiontest.user.entity;
 
 import com.netcracker.admissiontest.role.entity.Role;
-import com.netcracker.admissiontest.userSession.entity.UserSession;
 
 import javax.persistence.*;
 
@@ -24,15 +23,15 @@ public class User{
     //@JsonBackReference
     // @JsonManagedReference
     // @JsonIgnoreProperties("role")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", nullable = false)
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")//, nullable = false)
     private Role role;
 
     //@JsonManagedReference
     //@JsonIgnoreProperties("userSession")
     //@JsonManagedReference
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserSession userSession;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private UserSession userSession;
 
 
     public User() {}
@@ -54,11 +53,11 @@ public class User{
 
 
 
-    public long getId () {
+    public Long getId () {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -86,17 +85,13 @@ public class User{
         this.role = role;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public UserSession getUserSession() {
-        return userSession;
-    }
-
-    public void setUserSession(UserSession userSession) {
-        this.userSession = userSession;
-    }
+//    public UserSession getUserSession() {
+//        return userSession;
+//    }
+//
+//    public void setUserSession(UserSession userSession) {
+//        this.userSession = userSession;
+//    }
 
 
 }

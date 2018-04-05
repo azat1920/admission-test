@@ -14,6 +14,13 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+/*
+    @PostConstruct
+    public void init(){
+        createRole(new Role("admin"));
+        createRole(new Role("user"));
+    }
+*/
 
     public void createRole(Role role) {
          roleRepository.save(role);
