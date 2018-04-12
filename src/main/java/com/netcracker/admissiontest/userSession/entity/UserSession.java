@@ -1,12 +1,12 @@
 package com.netcracker.admissiontest.userSession.entity;
 
 import com.netcracker.admissiontest.user.entity.User;
+import org.hibernate.annotations.Subselect;
 
 import javax.persistence.*;
 import java.util.Date;
 
 
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Entity
 @Table(name="user_session")
 public class UserSession{
@@ -28,18 +28,13 @@ public class UserSession{
 
     }
 
-    public UserSession(Date start_date, Date end_date) {
+    public UserSession(User user, Date start_date, Date end_date) {
+        this.user = user;
         this.start_date = start_date;
         this.end_date = end_date;
     }
 
-
-
-    //@JsonBackReference
-    //@JoinColumn(name = "user_id")
-    //@JsonManagedReference
-    //@JsonIgnoreProperties("user")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne//(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
 
@@ -76,5 +71,8 @@ public class UserSession{
         this.user = user;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserSession ID: " + getId() + " Start: " + getStart_date() + " End: " + getEnd_date() + " User ID: " + getUser().getId();
+    }
 }
