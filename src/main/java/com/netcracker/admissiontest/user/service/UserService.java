@@ -24,7 +24,7 @@ public class UserService {
     private RoleRepository roleRepository;
 
     @Autowired
-    UserSessionRepository userSessionRepository;
+    private UserSessionRepository userSessionRepository;
 
     @PostConstruct
     public void init(){
@@ -42,16 +42,8 @@ public class UserService {
         User u1 = userRepository.findById(new Long(1)).get();
         User u2 = userRepository.findById(new Long(2)).get();
 
-        System.out.println("User:" + u1.toString());
-        System.out.println("User:" + u2.toString());
-
-
         UserSession us1 = new UserSession(u1, new Date(),new Date());
         UserSession us2 = new UserSession(u2, new Date(),new Date());
-
-        System.out.println(us1.toString());
-        System.out.println(us2.toString());
-
 
         userSessionRepository.save(us1);
         userSessionRepository.save(us2);

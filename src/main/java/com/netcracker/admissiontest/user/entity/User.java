@@ -20,19 +20,9 @@ public class User{
     @Column(name = "email")
     private String email;
 
-    //@JsonBackReference
-    // @JsonManagedReference
-    // @JsonIgnoreProperties("role")
     @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")//, nullable = false)
     private Role role;
-
-    //@JsonManagedReference
-    //@JsonIgnoreProperties("userSession")
-    //@JsonManagedReference
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private UserSession userSession;
-
 
     public User() {}
 
