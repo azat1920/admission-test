@@ -13,7 +13,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
-@RequestMapping(name = "/testreport")
+@RequestMapping("/testreport")
 public class TestReportController {
 
     @Autowired

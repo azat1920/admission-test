@@ -1,6 +1,5 @@
 package com.netcracker.admissiontest.userSession.controller;
 
-
 import com.netcracker.admissiontest.userSession.entity.UserSession;
 import com.netcracker.admissiontest.userSession.service.UserSessionService;
 import io.swagger.annotations.ApiOperation;
