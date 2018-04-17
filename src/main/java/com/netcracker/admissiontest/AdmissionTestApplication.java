@@ -15,8 +15,7 @@ public class AdmissionTestApplication extends SpringBootServletInitializer {
         return application.sources(AdmissionTestApplication.class);
     }
 
-    @Autowired
-    private RoleRepository roleRepository;
+
 
     public static void main(String[] args) {
 

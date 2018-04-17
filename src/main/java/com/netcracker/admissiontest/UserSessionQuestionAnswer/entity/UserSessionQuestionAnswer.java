@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "User_Session_Question_Answer")
-public class TestReport {
+public class UserSessionQuestionAnswer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +27,10 @@ public class TestReport {
     @JoinColumn(name="answer_id")
     private Answer answer;
 
-    public TestReport() {
+    public UserSessionQuestionAnswer() {
     }
 
-    public TestReport(UserSession userSession, Question question, Answer answer) {
+    public UserSessionQuestionAnswer(UserSession userSession, Question question, Answer answer) {
         this.userSession = userSession;
         this.question = question;
         this.answer = answer;
@@ -38,7 +38,7 @@ public class TestReport {
 
     @Override
     public String toString() {
-        return "TestReport{" +
+        return "UserSessionQuestionAnswerRepository{" +
                 "id=" + id +
                 ", userSession=" + userSession +
                 ", question=" + question +
