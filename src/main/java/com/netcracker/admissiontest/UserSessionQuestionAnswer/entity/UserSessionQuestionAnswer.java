@@ -1,4 +1,4 @@
-package com.netcracker.admissiontest.testReport.entity;
+package com.netcracker.admissiontest.UserSessionQuestionAnswer.entity;
 
 import com.netcracker.admissiontest.answer.entity.Answer;
 import com.netcracker.admissiontest.question.entity.Question;
@@ -7,7 +7,7 @@ import com.netcracker.admissiontest.userSession.entity.UserSession;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "test_report")
+@Table(name = "User_Session_Question_Answer")
 public class TestReport {
 
     @Id
