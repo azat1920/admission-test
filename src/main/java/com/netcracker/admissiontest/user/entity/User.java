@@ -17,6 +17,9 @@ public class User{
     @Column(name = "firstName")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "email")
     private String email;
 
@@ -26,9 +29,10 @@ public class User{
 
     public User() {}
 
-    public User(String name, String email, Role role) {
+    public User(String name, String password, String email,  Role role) {
 
         this.name = name;
+        this.password = password;
         this.email = email;
         this.role = role;
 
@@ -75,7 +79,15 @@ public class User{
         this.role = role;
     }
 
-//    public UserSession getUserSession() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    //    public UserSession getUserSession() {
 //        return userSession;
 //    }
 //

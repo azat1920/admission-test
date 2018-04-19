@@ -34,10 +34,10 @@ public class UserService {
         }
         List<Role> listAdmin = roleRepository.findByName("admin");
         System.out.println("out: " + listAdmin);
-        createUser(new User("admin","email", listAdmin.get(0)));
+        createUser(new User("admin","admin", "email", listAdmin.get(0)));
 
         List<Role> listUser = roleRepository.findByName("user");
-        createUser(new User("user_1", "email_1", listUser.get(0)));
+        createUser(new User("user_1", "user", "email_1", listUser.get(0)));
 
         User u1 = userRepository.findById(new Long(1)).get();
         User u2 = userRepository.findById(new Long(2)).get();
