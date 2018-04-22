@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
@@ -24,6 +25,18 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Get user by name and password", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/user/{name}&{password}/", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> getUserByNameAndPassword(@PathVariable("name") String name, @PathVariable("password") String password) {
+        List<User> users = userService.getUserByNameAndPassowerd(name, password);
+        if (users.size() > 0) {
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(users, HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     @ApiOperation(value = "Get user by id", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/user/{id}/", method = RequestMethod.GET)

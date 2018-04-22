@@ -62,6 +62,10 @@ public class UserService {
         return list;
     }
 
+    public List<User> getUserByNameAndPassowerd(String name, String password){
+        return userRepository.findByNameAndPassword(name, password);
+    }
+
     public User getUser(long id){
         return userRepository.findById(id).get();
     }

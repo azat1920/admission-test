@@ -1,6 +1,7 @@
 package com.netcracker.admissiontest.user.entity;
 
 import com.netcracker.admissiontest.role.entity.Role;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
