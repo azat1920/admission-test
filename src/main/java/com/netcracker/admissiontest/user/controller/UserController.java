@@ -3,6 +3,7 @@ package com.netcracker.admissiontest.user.controller;
 import com.netcracker.admissiontest.user.entity.User;
 import com.netcracker.admissiontest.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,12 @@ public class UserController {
     }
 
     @ApiOperation(value = "Get user by name and password", produces = APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value = "/user/{name}&{password}/", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> getUserByNameAndPassword(@PathVariable("name") String name, @PathVariable("password") String password) {
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> getUserByNameAndPassword(
+            @ApiParam(value = "User name")
+            @RequestParam(name = "name") String name,
+            @ApiParam(value = "User password")
+            @RequestParam(name = "password") String password) {
         List<User> users = userService.getUserByNameAndPassowerd(name, password);
         if (users.size() > 0) {
             return new ResponseEntity<>(users, HttpStatus.OK);
