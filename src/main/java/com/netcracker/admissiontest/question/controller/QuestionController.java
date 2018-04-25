@@ -1,6 +1,7 @@
 package com.netcracker.admissiontest.question.controller;
 
 import com.netcracker.admissiontest.question.entity.Question;
+import com.netcracker.admissiontest.question.service.QuestionGeneratorService;
 import com.netcracker.admissiontest.question.service.QuestionService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    QuestionGeneratorService questionGeneratorService;
 
     @ApiOperation(value = "Get all questions", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -51,6 +55,13 @@ public class QuestionController {
     public ResponseEntity<?> deleteQuestion(@PathVariable("id") Long id) {
         questionService.deleteQuestion(id);
         return  new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Get random questions", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value ="/generated/", method = RequestMethod.GET)
+    public ResponseEntity<List<Question>> getRandomQuestions() {
+
+        return  new ResponseEntity<>(questionGeneratorService.getRandomQuestions(), HttpStatus.OK);
     }
 
 }

@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="questions")
-public class Question {
+public class Question implements Comparable<Question>{
 
 
     @Id
@@ -66,4 +66,26 @@ public class Question {
     }
 
 
+    @Override
+    public int compareTo(Question o) {
+        return (int) (this.id - o.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if ((obj == null) || (obj.getClass() != this.getClass())){
+            return false;
+        }
+
+        Question q = (Question) obj;
+        return this.id.equals(q.id);
+    }
 }
