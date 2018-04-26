@@ -36,7 +36,6 @@ public class AnswerGeneratorService {
 
         }
 
-
         return collection;
 
     }

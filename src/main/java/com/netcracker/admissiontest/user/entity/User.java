@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+//@JsonIdentityInfo(constant = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Entity
 @Table(name = "users")
 public class User{
