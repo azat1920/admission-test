@@ -3,6 +3,8 @@ package com.netcracker.admissiontest.question.controller;
 import com.netcracker.admissiontest.question.entity.Question;
 import com.netcracker.admissiontest.question.service.QuestionGeneratorService;
 import com.netcracker.admissiontest.question.service.QuestionService;
+import com.netcracker.admissiontest.questionCategory.entity.QuestionCategory;
+import com.netcracker.admissiontest.questionCategory.service.QuestionCategoryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private QuestionCategoryService questionCategoryService;
 
     @Autowired
     QuestionGeneratorService questionGeneratorService;
@@ -64,4 +68,10 @@ public class QuestionController {
         return  new ResponseEntity<>(questionGeneratorService.getRandomQuestions(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Get questions by category Id", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value ="/category/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Question>> getQuestionsByCategoryId(@PathVariable("id") Long id) {
+        QuestionCategory questionCategory = questionCategoryService.getQuestionCategory(id);
+        return  new ResponseEntity<List<Question>>(questionService.getQuestionsByCategoryId(questionCategory), HttpStatus.OK);
+    }
 }

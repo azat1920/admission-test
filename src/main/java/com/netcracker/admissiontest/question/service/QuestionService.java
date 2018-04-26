@@ -2,6 +2,7 @@ package com.netcracker.admissiontest.question.service;
 
 import com.netcracker.admissiontest.question.entity.Question;
 import com.netcracker.admissiontest.question.repository.QuestionRepository;
+import com.netcracker.admissiontest.questionCategory.entity.QuestionCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,7 @@ public class QuestionService {
         questionRepository.save(question);
     }
 
-
+    public List<Question> getQuestionsByCategoryId(QuestionCategory questionCategory) {
+        return questionRepository.findByQuestionCategory(questionCategory);
+    }
 }
