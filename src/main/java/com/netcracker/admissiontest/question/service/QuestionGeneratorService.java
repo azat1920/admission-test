@@ -1,5 +1,6 @@
 package com.netcracker.admissiontest.question.service;
 
+import com.netcracker.admissiontest.constant.repository.ConstantRepository;
 import com.netcracker.admissiontest.question.entity.Question;
 import com.netcracker.admissiontest.question.repository.QuestionRepository;
 import com.netcracker.admissiontest.questionCategory.entity.QuestionCategory;
@@ -19,6 +20,9 @@ public class QuestionGeneratorService {
     @Autowired
     private QuestionCategoryRepository questionCategoryRepository;
 
+    @Autowired
+    private ConstantRepository constantRepository;
+
     public Long getQuestionsCount() {
         return questionsCount;
     }
@@ -27,7 +31,6 @@ public class QuestionGeneratorService {
         this.questionsCount = questionsCount;
     }
 
-    @Value("${questionsCount}")
     private Long questionsCount;
 
 
@@ -37,6 +40,9 @@ public class QuestionGeneratorService {
 
 
     public List<Question> getRandomQuestions(){
+
+
+        questionsCount =  Long.parseLong(constantRepository.findByName("questionsCount").getValue());// new Long(20); //
 
         Set<Question> questions = new TreeSet<>();            //сет уникальных вопросов
         long questionsInCategoryCount = questionsCount / 5;   //количество вопросов на категорию
