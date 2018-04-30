@@ -2,6 +2,8 @@ package com.netcracker.admissiontest.question.entity;
 
 
 import com.netcracker.admissiontest.questionCategory.entity.QuestionCategory;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 
@@ -16,7 +18,8 @@ public class Question implements Comparable<Question>{
     private Long id;
 
 
-    @ManyToOne
+    @ManyToOne()
+    @Cascade(CascadeType.DELETE)
     @JoinColumn(name = "question_category_id")
     private QuestionCategory questionCategory;
 

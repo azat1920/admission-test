@@ -7,6 +7,8 @@ import com.netcracker.admissiontest.question.repository.QuestionRepository;
 import com.netcracker.admissiontest.question.service.QuestionService;
 import com.netcracker.admissiontest.questionCategory.entity.QuestionCategory;
 import com.netcracker.admissiontest.questionCategory.repository.QuestionCategoryRepository;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,8 +70,10 @@ public class QuestionCategoryService {
             questionCategoryRepository.save(questionCategory);
         }
 
+
         public void deleteQuestionCategory(Long id){
             questionCategoryRepository.deleteById(id);
+
         }
 
 

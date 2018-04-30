@@ -74,4 +74,13 @@ public class QuestionController {
         QuestionCategory questionCategory = questionCategoryService.getQuestionCategory(id);
         return  new ResponseEntity<List<Question>>(questionService.getQuestionsByCategoryId(questionCategory), HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Delete questions by category id", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value ="/category/{id}/", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteQuestionByCategoryId(@PathVariable("id") Long id) {
+        QuestionCategory questionCategory = questionCategoryService.getQuestionCategory(id);
+        questionService.deleteQuestionByCategory(questionCategory);
+        return  new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

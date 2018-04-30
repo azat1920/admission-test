@@ -1,6 +1,8 @@
 package com.netcracker.admissiontest.answer.entity;
 
 import com.netcracker.admissiontest.question.entity.Question;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 
@@ -16,6 +18,7 @@ public class Answer {
 
 
     @ManyToOne
+    @Cascade(CascadeType.DELETE)
     @JoinColumn(name = "question_id")
     private Question question;
 
@@ -43,6 +46,13 @@ public class Answer {
                 ", isCorrect=" + isCorrect +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+
 
     public Long getId() {
         return id;
