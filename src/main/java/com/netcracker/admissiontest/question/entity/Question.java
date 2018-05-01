@@ -19,7 +19,6 @@ public class Question implements Comparable<Question>{
 
 
     @ManyToOne()
-    @Cascade(CascadeType.DELETE)
     @JoinColumn(name = "question_category_id")
     private QuestionCategory questionCategory;
 

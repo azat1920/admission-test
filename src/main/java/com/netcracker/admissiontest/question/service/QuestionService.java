@@ -46,12 +46,10 @@ public class QuestionService {
         questionRepository.save(question);
     }
 
-    public  void deleteQuestion(Long id){
-
+    public void deleteQuestion(Long id) {
         List<Answer> answers = answerRepository.findAllByQuestion(getQuestion(id));
 
-        for (Answer answer: answers
-             ) {
+        for (Answer answer: answers) {
             answerService.deleteAnswer(answer.getId());
         }
 

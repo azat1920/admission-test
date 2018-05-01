@@ -18,7 +18,6 @@ public class Answer {
 
 
     @ManyToOne
-    @Cascade(CascadeType.DELETE)
     @JoinColumn(name = "question_id")
     private Question question;
 

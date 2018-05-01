@@ -20,13 +20,16 @@ import java.util.List;
 public class QuestionCategoryService {
 
     @Autowired
+    private QuestionService questionService;
+
+    @Autowired
     private QuestionCategoryRepository questionCategoryRepository;
 
     @Autowired
     private QuestionRepository questionRepository;
 
     @Autowired
-    AnswerRepository answerRepository;
+    private AnswerRepository answerRepository;
 
 
     @PostConstruct
@@ -45,8 +48,6 @@ public class QuestionCategoryService {
 
     }
 
-
-
     public List<QuestionCategory> getAll(){
         List<QuestionCategory> list = new ArrayList<>();
 
@@ -58,38 +59,38 @@ public class QuestionCategoryService {
         return list;
     }
 
-        public QuestionCategory getQuestionCategory(Long id){
+    public QuestionCategory getQuestionCategory(Long id){
             return questionCategoryRepository.findById(id).get();
         }
 
-        public void createQuestionCategory(QuestionCategory questionCategory){
-            questionCategoryRepository.save(questionCategory);
+    public void createQuestionCategory(QuestionCategory questionCategory){
+        questionCategoryRepository.save(questionCategory);
+    }
+
+    public void updateQuestionCategory(Long id, QuestionCategory questionCategory){
+        questionCategoryRepository.save(questionCategory);
+    }
+
+    public void deleteQuestionCategory(Long id){
+        QuestionCategory questionCategory = questionCategoryRepository.findById(id).get();
+        List<Question> questions = questionRepository.findByQuestionCategory(questionCategory);
+
+        for (Question question : questions) {
+            questionService.deleteQuestion(question.getId());
         }
 
-        public void updateQuestionCategory(Long id, QuestionCategory questionCategory){
-            questionCategoryRepository.save(questionCategory);
+        questionCategoryRepository.deleteById(id);
+    }
+
+    private void saveQuestionAnswer(List<Question> questions, List<Answer> answers){
+        for (Question question: questions ) {
+            questionRepository.save(question);
         }
 
-
-        public void deleteQuestionCategory(Long id){
-            questionCategoryRepository.deleteById(id);
-
+        for (Answer answer: answers) {
+            answerRepository.save(answer);
         }
-
-
-        private void saveQuestionAnswer(List<Question> questions, List<Answer> answers){
-
-            for (Question question: questions
-                    ) {
-                questionRepository.save(question);
-            }
-
-            for (Answer answer: answers
-                    ) {
-                answerRepository.save(answer);
-            }
-
-        }
+    }
 
     private void createJavaTest(){
 
