@@ -42,9 +42,8 @@ public class QuestionController {
 
     @ApiOperation(value = "Create question", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<?> createQuestion(@RequestBody Question question) {
-        questionService.createQuestion(question);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
+        return new ResponseEntity<Question>(questionService.createQuestion(question), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Update question", produces = APPLICATION_JSON_UTF8_VALUE)

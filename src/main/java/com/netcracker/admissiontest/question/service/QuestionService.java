@@ -56,8 +56,8 @@ public class QuestionService {
         questionRepository.deleteById(id);
     }
 
-    public void createQuestion(Question question){
-        questionRepository.save(question);
+    public Question createQuestion(Question question){
+        return questionRepository.save(question);
     }
 
     public List<Question> getQuestionsByCategoryId(QuestionCategory questionCategory) {
