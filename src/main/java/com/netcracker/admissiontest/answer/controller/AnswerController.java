@@ -39,6 +39,12 @@ public class AnswerController {
         return new ResponseEntity<>(answerService.getAnswer(id), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Get answers by question id", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/question/{id}/", method = RequestMethod.GET)
+    public ResponseEntity<List<Answer>> getAnswerByQuestionId(@PathVariable("id") Long id){
+        return new ResponseEntity<>(answerService.getAnswerByQuestionId(id), HttpStatus.OK);
+    }
+
     @ApiOperation(value = "Get generated questions and answers", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/test/", method = RequestMethod.GET)
     public ResponseEntity<Map<Question, Set<Answer>>> getGeneratedTest() {
@@ -67,4 +73,6 @@ public class AnswerController {
         answerService.deleteAnswer(id);
         return  new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }

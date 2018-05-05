@@ -2,6 +2,7 @@ package com.netcracker.admissiontest.answer.service;
 
 import com.netcracker.admissiontest.answer.entity.Answer;
 import com.netcracker.admissiontest.answer.repository.AnswerRepository;
+import com.netcracker.admissiontest.question.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class AnswerService {
 
     @Autowired
     private AnswerRepository answerRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
 
     public List<Answer> getAll(){
 
@@ -43,4 +47,12 @@ public class AnswerService {
         answerRepository.deleteById(id);
     }
 
+    public List<Answer> getAnswerByQuestionId(Long id){
+        List<Answer> answers = new ArrayList<>();
+
+        for (Answer answer:answerRepository.findAllByQuestion(questionRepository.findById(id).get())) {
+            answers.add(answer);
+        }
+        return  answers;
+    }
 }
