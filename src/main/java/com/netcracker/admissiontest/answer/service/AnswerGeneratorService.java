@@ -40,5 +40,22 @@ public class AnswerGeneratorService {
 
     }
 
+    public List<Answer> getGeneratedAnswersOfTest(){
+        List<Answer> answers = new ArrayList<>();
+
+        Set<Answer> tempAnswers;
+        List<Question> questions = questionGeneratorService.getRandomQuestions();
+
+
+        for (Question question: questions) {
+            tempAnswers = new HashSet<>(answerRepository.findAllByQuestion(question));
+            for (Answer answer: tempAnswers) {
+                answers.add(answer);
+            }
+        }
+
+        return answers;
+    }
+
 
 }

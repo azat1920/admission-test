@@ -45,12 +45,17 @@ public class AnswerController {
         return new ResponseEntity<>(answerService.getAnswerByQuestionId(id), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Get generated questions and answers", produces = APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "Get generated questions and answers of test", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/test/", method = RequestMethod.GET)
     public ResponseEntity<Map<Question, Set<Answer>>> getGeneratedTest() {
         return new ResponseEntity<>(answerGeneratorService.getGeneratedTest(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Get generated answers of test", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/test/answers/", method = RequestMethod.GET)
+    public ResponseEntity<List<Answer>> getGeneratedAnswersOfTest() {
+        return new ResponseEntity<>(answerGeneratorService.getGeneratedAnswersOfTest(), HttpStatus.OK);
+    }
 
 
     @ApiOperation(value = "Create answer", produces = APPLICATION_JSON_UTF8_VALUE)
