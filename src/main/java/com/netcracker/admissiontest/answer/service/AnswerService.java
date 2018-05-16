@@ -55,4 +55,15 @@ public class AnswerService {
         }
         return  answers;
     }
+
+
+    public Long checkCorrectAnswers(List<Answer> answers){
+        Long count = new Long(0);
+
+        for (Answer answer: answers) {
+            if (answer.isCorrect()) count++;
+        }
+
+        return count;
+    }
 }

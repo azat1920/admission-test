@@ -18,8 +18,11 @@ public class ConstantService {
 
     @PostConstruct
     public void init(){
-        Constant constant = new Constant("questionsCount", new Long(20).toString());
+        Constant constant = new Constant("questionsCount", "20");
         createConstant(constant);
+        createConstant(new Constant("passed", "80"));
+        createConstant(new Constant("conditionally_passed", "60"));
+        createConstant(new Constant("not_passed", "60"));
     }
 
 

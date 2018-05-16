@@ -11,11 +11,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/answer")
@@ -27,9 +30,13 @@ public class AnswerController {
     @Autowired
     private AnswerGeneratorService answerGeneratorService;
 
+
+    Logger logger = LoggerFactory.getLogger(AnswerController.class);
+
     @ApiOperation(value = "Get all answers", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<Answer>> getAllAnswers() {
+        logger.info("Start getting all answers " + new Date().toString());
         return new ResponseEntity<>(answerService.getAll(), HttpStatus.OK);
     }
 
@@ -77,6 +84,12 @@ public class AnswerController {
     public ResponseEntity<?> deleteAnswer(@PathVariable("id") Long id) {
         answerService.deleteAnswer(id);
         return  new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Check correct answers", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/check/", method = RequestMethod.POST)
+    public ResponseEntity<Long> checkCorrectAnswers(@RequestBody List<Answer> answers) {
+        return new ResponseEntity<>(answerService.checkCorrectAnswers(answers), HttpStatus.CREATED);
     }
 
 
