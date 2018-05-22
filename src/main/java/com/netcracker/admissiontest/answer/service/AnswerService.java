@@ -66,4 +66,18 @@ public class AnswerService {
 
         return count;
     }
+
+    public List<Answer> getAllCorrectAnswers(){
+
+        List<Answer> answers = new ArrayList<>();
+
+        for (Answer answer: answerRepository.findAll()) {
+            if (answer.isCorrect())
+            answers.add(answer);
+        }
+
+        return answers;
+
+    }
+
 }

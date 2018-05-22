@@ -40,6 +40,13 @@ public class AnswerController {
         return new ResponseEntity<>(answerService.getAll(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Get all correct answers", produces = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/correct/", method = RequestMethod.GET)
+    public ResponseEntity<List<Answer>> getAllCorrectAnswers() {
+        return new ResponseEntity<>(answerService.getAllCorrectAnswers(), HttpStatus.OK);
+    }
+
+
     @ApiOperation(value = "Get answer by id", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/answer/{id}/", method = RequestMethod.GET)
     public ResponseEntity<Answer> getAnswerById(@PathVariable("id") Long id){
