@@ -30,7 +30,7 @@ public class QuestionController {
 
     @ApiOperation(value = "Get all questions", produces = APPLICATION_JSON_UTF8_VALUE)
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<List<Question>> getAllQuestons() {
+    public ResponseEntity<List<Question>> getAllQuestions() {
         return new ResponseEntity<>(questionService.getAll(), HttpStatus.OK);
     }
 

@@ -40,7 +40,7 @@ public class AnswerService {
     }
 
     public void createAnswer(Answer answer){
-        answerRepository.save(answer);
+        if (answer.getAnswerStr().length() > 0) answerRepository.save(answer);
     }
 
     public void deleteAnswer(Long id){
